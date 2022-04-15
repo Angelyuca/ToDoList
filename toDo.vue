@@ -44,21 +44,7 @@
     </div>
     <div class="d-flex align-center mt-1">
       <div v-if="list.length" class="pseudo-checkbox"></div>
-      <!--      <v-textarea-->
-      <!--          auto-grow-->
-      <!--          class="input-custom mt-0"-->
-      <!--          placeholder="Добавить новое задание"-->
-      <!--          hide-details-->
-      <!--          dense-->
-      <!--          v-model="input"-->
-      <!--          clearable-->
-      <!--          clear-icon="mdi-close"-->
-      <!--          :append-icon="input ? 'mdi-plus' : ''"-->
-      <!--          @click:append="addParsing(input)"-->
-      <!--          @keypress.enter.prevent="addParsing(input)"-->
-      <!--          color="#dcdcdc"-->
-      <!--          row-height="1"-->
-      <!--      ></v-textarea>-->
+   
       <miniEditor
           style="width: 100%"
           :pasteHelper="pasteHelper"
@@ -155,19 +141,7 @@ export default {
   methods: {
     enter(data, parent_id = 0) {
       let newItem = {}
-      // let textWithoutTags = data[0].replace(/<\/?[^>]+(>|$)/g, "\n");
-      // let arrayOfStrings = textWithoutTags.match(/[^\n]+/g);
-      // console.log(data[0].replace(/(<(\/?[^>]+)>)/g, '').replace(/&nbsp;/gi, ' '))
-
-      // const { body } = new DOMParser().parseFromString(data[0], 'text/html');
-      // console.log(body.getElementsByTagName('body'));
-
-
-      // console.log(arrayOfStrings);
-
-
-
-
+   
       for (let value of data) {
         if (value.length) {
           if (value.match(/<(\/?[^>]+)>/)) {
@@ -220,30 +194,7 @@ export default {
       return resp;
     },
     addSub(e) {
-      // this.addParsing(e.text, e.parent_id)
       this.enter(e.text, e.parent_id)
-      // let maxId = maxBy(this.list, function (o) {
-      //   return o.id;
-      // })
-      // let newSub = {
-      //   id: maxId ? maxId.id + 1 : 1,
-      //   text: 'Новое подзадание',
-      //   parent_id: e.id,
-      //   state: {checked: false}
-      // }
-      // this.list.unshift(newSub);
-      // if (!this.activeTab) {
-      //   this.$refs.tree.tree.setModel(arrayToTree(this.list))
-      // } else {
-      //   let done = false;
-      //   if (this.activeTab === 2) {
-      //     done = true;
-      //   }
-      //   this.$refs.tree.tree.setModel(arrayToTree(this.list.filter((o) => o.state.checked === done)));
-      // }
-      // this.data2.html_options.totalInfo = this.list.length
-      // this.$emit("save", {list: this.list, text: this.text})
-      // this.$refs.tree.tree.expand(e)
     },
     updateData() {
       if (!this.list) {
